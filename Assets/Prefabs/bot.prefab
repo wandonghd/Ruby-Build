@@ -127,7 +127,7 @@ BoxCollider2D:
   m_Offset: {x: -0.0037074685, y: 0.4649197}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5109147, y: 0.061122067}
     oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62cd99de82b5a4d47a7448d1e74af1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  vertical: 0
+  speed: 0.5
+  vertical: 1
   changeTime: 3
   smokeEffect: {fileID: 6305411982593361692}
 --- !u!82 &1866022141542499117
