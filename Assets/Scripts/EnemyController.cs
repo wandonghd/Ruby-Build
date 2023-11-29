@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class EnemyController : MonoBehaviour
     public float changeTime = 3.0f;
 
     public ParticleSystem smokeEffect;
-    
+
     Rigidbody2D rigidbody2D;
     float timer;
     int direction = 1;
@@ -23,6 +24,7 @@ public class EnemyController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
+        UIFixBots.instance.incrementMaxValue();
     }
 
     void Update()
@@ -85,7 +87,7 @@ public class EnemyController : MonoBehaviour
         rigidbody2D.simulated = false;
         //optional if you added the fixed animation
         animator.SetTrigger("Fixed");
-        
         smokeEffect.Stop();
+        UIFixBots.instance.addValue(1);
     }
 }

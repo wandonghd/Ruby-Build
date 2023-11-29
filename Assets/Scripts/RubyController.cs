@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RubyController : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class RubyController : MonoBehaviour
     
     public AudioClip throwSound;
     public AudioClip hitSound;
+
+    public ParticleSystem takeDamageEffect;
+    public ParticleSystem receiveHealthEffect;
     
     public int health { get { return currentHealth; }}
     int currentHealth;
@@ -82,6 +86,11 @@ public class RubyController : MonoBehaviour
                 }
             }
         }
+        //Debug.Log(Time.timeScale);
+        if (Input.GetKey("r") && Time.timeScale == 0){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1;
+        }
     }
     
     void FixedUpdate()
@@ -102,12 +111,19 @@ public class RubyController : MonoBehaviour
             
             isInvincible = true;
             invincibleTimer = timeInvincible;
-            
+            Debug.Log("take dmg");// you take damgage here
+            takeDamageEffect.Play();
             PlaySound(hitSound);
+        }
+        else {
+            Debug.Log("gain health");
+            receiveHealthEffect.Play();
         }
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        
+        if( currentHealth <= 0 ){
+            UIFixBots.instance.deadFox();
+        }
         UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
     
