@@ -25,7 +25,7 @@ public class UIFixBots : MonoBehaviour
         numberOfFixedBots = numberOfFixedBots + value;
         fixedRobotsText.text = " Fixed Robots is : " + numberOfFixedBots.ToString();
         if(numberOfFixedBots == maxRobots){
-            endGameText.text = "WOW you WON HOWIE\n Press R to restart";
+            endGameText.text = "WOW you WON! HOWIE\n Press R to restart";
             Time.timeScale = 0;
         }
     }
